@@ -26,15 +26,17 @@ function add() {
         ul.appendChild(li);
         /* 入力フォームを空にする */
         input.value = "";
-
+        /* liタグのデータを保存する */
         saveData();
     }
 }
 
+/* liタグのデータを保存する */
 function saveData() {
     const lists = document.querySelectorAll("li");
     let todos = [];
     lists.forEach(list => {
+        /* 配列todosに要素lsをプッシュしていく */
         todos.push(list.innerText);
     })
 }
