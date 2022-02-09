@@ -26,5 +26,15 @@ function add() {
         ul.appendChild(li);
         /* 入力フォームを空にする */
         input.value = "";
+
+        saveData();
     }
+}
+
+function saveData() {
+    const lists = document.querySelectorAll("li");
+    let todos = [];
+    lists.forEach(list => {
+        todos.push(list.innerText);
+    })
 }
