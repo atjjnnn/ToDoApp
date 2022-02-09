@@ -3,6 +3,16 @@ const form = document.getElementById("form");
 const input = document.getElementById("input");
 const ul = document.getElementById("ul");
 
+const todos = JSON.parse(localStorage.getItem("todos"));
+
+/* リロードされてもリストが消えないようにする */
+/* →local storageにキーtodosがあればtodosの値をlsタグとして画面に追加する(add関数をコール) */
+if (todos) {
+    todos.forEach(todo => {
+        add(todo);
+    })
+}
+
 /* イベントが起きた時の処理 = ここではsubmit(エンター)された時の処理 */
 form.addEventListener("submit", function (event) {
     /* フォームをsubmitした時のブラウザのリロードの中断 */
@@ -12,8 +22,12 @@ form.addEventListener("submit", function (event) {
 });
 
 /* ユーザがフォームに入力したテキストをliタグとして画面に追加する */
-function add() {
+function add(todo) {
     let todoText = input.value; 
+
+    if (todo) {
+        todoText = todo;
+    }
     /* 文字が入力されているかチェック */
     if (todoText.length > 0) {
         /* liタグを作る */
@@ -38,5 +52,6 @@ function saveData() {
     lists.forEach(list => {
         /* 配列todosに要素lsをプッシュしていく */
         todos.push(list.innerText);
-    })
+    });
+    localStorage.setItem("todos", JSON.stringify(todos));
 }
