@@ -3,6 +3,7 @@ const form = document.getElementById("form");
 const input = document.getElementById("input");
 const ul = document.getElementById("ul");
 
+/* local storageからキーtodosの値を取得する */
 const todos = JSON.parse(localStorage.getItem("todos"));
 
 /* リロードされてもリストが消えないようにする */
@@ -53,5 +54,6 @@ function saveData() {
         /* 配列todosに要素lsをプッシュしていく */
         todos.push(list.innerText);
     });
+    /* todosの値を”todos"という名前でlocal storageに保存 */
     localStorage.setItem("todos", JSON.stringify(todos));
 }
