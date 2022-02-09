@@ -13,14 +13,18 @@ form.addEventListener("submit", function (event) {
 
 /* ユーザがフォームに入力したテキストをliタグとして画面に追加する */
 function add() {
-    /* liタグを作る */
-    const li = document.createElement("li");
-    /* liをテキストとしてユーザが入力した値を入れる */
-    li.innerText = input.value;
-    /* liタグにデザインを当てる */
-    li.classList.add("list-group-item");
-    /* ulタグの子供にliタグを追加する */
-    ul.appendChild(li);
-    /* 入力フォームを空にする */
-    input.value = "";
+    let todoText = input.value; 
+    /* 文字が入力されているかチェック */
+    if (todoText.length > 0) {
+        /* liタグを作る */
+        const li = document.createElement("li");
+        /* liをテキストとしてユーザが入力した値を入れる */
+        li.innerText = todoText;
+        /* liタグにデザインを当てる */
+        li.classList.add("list-group-item");
+        /* ulタグの子供にliタグを追加する */
+        ul.appendChild(li);
+        /* 入力フォームを空にする */
+        input.value = "";
+    }
 }
