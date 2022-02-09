@@ -37,6 +37,15 @@ function add(todo) {
         li.innerText = todoText;
         /* liタグにデザインを当てる */
         li.classList.add("list-group-item");
+
+        /* 右クリックされると、liタグのリストが削除される */
+        li.addEventListener("contextmenu", function
+        (event) {
+            event.preventDefault();
+            li.remove();
+            saveData();
+        })
+
         /* ulタグの子供にliタグを追加する */
         ul.appendChild(li);
         /* 入力フォームを空にする */
