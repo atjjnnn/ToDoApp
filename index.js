@@ -45,6 +45,11 @@ function add(todo) {
             li.remove();
             saveData();
         })
+        
+        /* クリックでlistに打ち消し線をつける */
+        li.addEventListener("click", function () {
+            li.classList.toggle("text-decoration-line-through");
+        })
 
         /* ulタグの子供にliタグを追加する */
         ul.appendChild(li);
